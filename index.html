@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="num1" placeholder="Введите число">
+    <input style="width: 30px;"type="text" id="operator" placeholder="+-/*">
+    <input type="number" id="num2" placeholder="Введите число">
+    <button id="resBtn">=</button>
+    <span id="result">result</span>
+    <script>
+        let input1 = document.getElementById('num1')
+        let input2 = document.getElementById('num2')
+        let operator = document.getElementById('operator')
+        let resBtn = document.getElementById('resBtn')
+        let resultElement = document.getElementById('result')
+
+        class Calc {
+            constructor(num1,num2) {
+                this.num1 = num1;
+                this.num2 = num2;
+            }
+            set setNum1(value) {
+                this.num1 = +value;
+            }
+            set setNum2(value) {
+                this.num2 = +value;
+            }
+            get plus () {
+                return this.num1 + this.num2
+                resultElement.innerHTML = result
+            }
+            get minus () {
+                return this.num1 - this.num2
+            }
+            get multiply () {
+                return this.num1 * this.num2
+            }
+            get division () {
+                return this.num1 / this.num2
+            }
+        }
+        let calcul = new Calc();
+        input1.addEventListener('keyup', () => {
+            calcul.num1 = +input1.value
+        })
+        input2.addEventListener('keyup', () => {
+            calcul.num2 = +input2.value
+        })
+        resBtn.addEventListener('click', calcul)
+
+        resBtn.addEventListener('click', () => {
+            let result
+            switch (operator.value) {
+                case '+':
+                    result = calcul.num1 + calcul.num2
+                    resultElement.innerHTML = result
+                    break;
+                case '-':
+                    result = calcul.num1 - calcul.num2
+                    resultElement.innerHTML = result
+                    break;
+                case '*':
+                    result = calcul.num1 * calcul.num2
+                    resultElement.innerHTML = result
+                    break;
+                case '/':
+                    result = calcul.num1 / calcul.num2
+                    resultElement.innerHTML = result
+                    break;
+                default:
+                    alert('wrong')
+            }
+        })
+        
+            
+    </script>
+</body>
+</html>
